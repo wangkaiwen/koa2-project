@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <%- include('layout') -%>
+</head>
+<body>
+<% var aa = '这是一个ejs页面' %>
+<div>
+    <p><%= title %></p>
+    <span><%= data.name %></span>
+    <ul>
+        <% data.list.forEach((item)=>{ %>
+        <li><%= item.name %></li>
+        <% }) %>
+    </ul>
+    <%= aa %>
+</div>
+<script>
+    $.get('/json', function (res) {
+        console.log(res)
+    })
+    $.get('/api/user', function (res) {
+        console.log(res)
+    })
+    $.post('/api/user/add', {name: '王五'}, function (res) {
+        console.log(res)
+    })
+    // $.post('/api/article/create', {
+    //     title: '这是一个标题',
+    //     author:'王凯文',
+    //     content:'哈哈哈哈哈哈这是文章内容',
+    //     category:'类别'
+    // }, function (res) {
+    //     console.log(res)
+    // })
+
+    $.get('/api/article/list', {title: '标题', pageIndex: 2, pageSize: 10}, function (res) {
+        console.log(res)
+    })
+
+</script>
+</body>
+</html>
